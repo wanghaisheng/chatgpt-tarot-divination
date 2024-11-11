@@ -13,7 +13,7 @@
 - [x] 周公解梦
 - [x] 起名
 - [x] 梅花易数
-- [x] 姻缘 ![@alongLFB](https://github.com/alongLFB)
+- [x] 姻缘 [@alongLFB](https://github.com/alongLFB)
 
 ![demo](assets/demo.png)
 
@@ -29,11 +29,10 @@ services:
       - 8000:8000
     environment:
       - api_key=sk-xxx
-      - api_base=https://api.openai.com/v1 # optional
-      - model=gpt-3.5-turbo # optional
-      - rate_limit=10/minute # optional
-      - user_rate_limit=600/hour # optional
-      - log_dir=/logs/ # optional
+      # - api_base=https://api.openai.com/v1 # optional
+      # - model=gpt-3.5-turbo # optional
+      # - rate_limit=10/minute # optional
+      # - user_rate_limit=600/hour # optional
       - github_client_id=xxx
       - github_client_secret=xxx
       - jwt_secret=secret
@@ -61,6 +60,8 @@ cd frontend
 pnpm install
 pnpm build --emptyOutDir
 cd ..
+rm -r dist
+cp -r frontend/dist/ dist
 python3 -m venv ./venv
 ./venv/bin/python3 -m pip install -r requirements.txt
 ./venv/bin/python3 main.py

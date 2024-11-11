@@ -1,5 +1,5 @@
 from typing import Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class SettingsInfo(BaseModel):
@@ -9,6 +9,8 @@ class SettingsInfo(BaseModel):
     user_rate_limit: str
     ad_client: str = ""
     ad_slot: str = ""
+    enable_login: bool = False
+    enable_rate_limit: bool = False
 
 
 class OauthBody(BaseModel):
@@ -46,3 +48,12 @@ class DivinationBody(BaseModel):
     new_name: Optional[NewName] = None
     plum_flower: Optional[PlumFlower] = None
     fate: Optional[Fate] = None
+
+
+class BirthdayBody(BaseModel):
+    birthday: str = Field(example="2000-08-17 00:00:00")
+
+
+class CommonResponse(BaseModel):
+    content: str
+    request_id: str
